@@ -1,1 +1,18 @@
-Hello world.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    name: nginx
+    app: nginx
+
+spec: 
+  containers: 
+    - name: nginx-pod
+      image: nginx
+      
+
+
+
+
+
