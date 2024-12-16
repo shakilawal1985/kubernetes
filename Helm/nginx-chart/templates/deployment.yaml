@@ -13,9 +13,9 @@ spec:
         app: hello-world
     spec:
     containers:
-      - name: hello-world
+      name: hello-world
       image: nginx
       ports:
-        - name: http
+        name: http
         containerPort: 80
         protocol: TCP

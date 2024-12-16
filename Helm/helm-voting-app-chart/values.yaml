@@ -1,0 +1,33 @@
+# Default values for helm-voting-app-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+VotingApp:
+  appName: voting-deploy
+  replica: 1
+  image: kodekloud/examplevotingapp_vote:v1
+
+worker:
+  appName: worker
+  image: kodekloud/examplevotingapp_worker:v1
+
+resultApp:
+  appName: result-deployment
+  image: kodekloud/examplevotingapp_result:v1
+resultService:
+  appName: result-pod
+
+redisApp:
+  appName: redis-deploy
+  image: redis
+redisService:
+  appName: redis-pod
+pvc:
+  storageCapacity: 1Gi
+  accessMode: ReadWriteOnce
+pv:
+  accessMode: ReadWriteOnce
+  storageCapacity: 1Gi
+postgressSecretApp:
+  appName: postgres-secret
+

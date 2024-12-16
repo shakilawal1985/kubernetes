@@ -1,0 +1,27 @@
+# What do want?
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+spec:
+  storageClassName: mylocalstorage
+  accessModes:
+    - {{ .Values.pvc.accessMode}} 
+  resources:
+    requests:
+      storage: {{ .Values.pvc.storageCapacity}}
+---
+# How do we want it implemented
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-storage
+spec:
+  storageClassName: mylocalstorage
+  capacity:
+    storage: {{ .Values.pv.accessMode}}
+  accessModes:
+    - {{ .Values.pv.accessMode}}
+  hostPath:
+    path: "/mnt/our/directory/structure"
+    type: DirectoryOrCreate

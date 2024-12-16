@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.redisApp.appName}}
+  labels:
+    app: demo-voting-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.redisApp.specAppName}}
+  template:   # for pod definition
+    metadata:
+      name: redis-pod
+      labels:
+        app: {{ .Values.redisApp.specAppName}}
+    spec:
+      containers:
+      - name: redis
+        image: {{ .Values.redisApp.image}}
+        ports:
+        - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  labels:
+    name: redis-service
+    app: demo-voting-app
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ .Values.redisService.appName}}
+  ports:
+  - port: 6379
+    targetPort: 6379
