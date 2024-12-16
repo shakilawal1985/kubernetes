@@ -8,12 +8,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.redisApp.specAppName}}
+      app: {{ .Values.redisApp.appName}}
   template:   # for pod definition
     metadata:
       name: redis-pod
       labels:
-        app: {{ .Values.redisApp.specAppName}}
+        app: {{ .Values.redisApp.appName}}
     spec:
       containers:
       - name: redis
