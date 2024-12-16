@@ -19,7 +19,7 @@ metadata:
 spec:
   storageClassName: mylocalstorage
   capacity:
-    storage: {{ .Values.pv.accessMode}}
+    storage: {{ .Values.pv.storageCapacity}}
   accessModes:
     - {{ .Values.pv.accessMode}}
   hostPath:
